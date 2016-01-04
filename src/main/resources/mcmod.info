@@ -1,0 +1,16 @@
+[
+{
+  "modid": "rblr",
+  "name": "Rabbits Breed Like Rabbits",
+  "description": "Rabbits breed like rabbits, and other rabbit tweaks",
+  "version": "2.0.0.1",
+  "mcversion": "1.8,1.8.8",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["The_Fireplace"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
