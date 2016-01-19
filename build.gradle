@@ -17,17 +17,15 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 curseforge {
-  apiKey = '98d48d8e-6c96-4bb6-a2dd-2f7d0f33180d' // This should really be in a gradle.properties file
+  apiKey = project.curseForgeApiKey
   project {
-    id = '000000'
+    id = '240916'
     changelog = file('changelog.txt')
     releaseType = 'release'
 	addGameVersion '1.8'
-    mainArtifact(jar) {
-      relations {
-        optionalLibrary 'notenoughitems'
-      }
-    }    
+	addGameVersion '1.8.8'
+	addGameVersion '1.8.9'
+    mainArtifact jar
   }
 }
 
@@ -36,9 +34,9 @@ group= "the_fireplace.rblr" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "RabbitsBreedLikeRabbits"
 
 minecraft {
-    version = "1.8-11.14.3.1486"
+    version = "1.8.9-11.15.0.1700"
     runDir = "run"
-    mappings = "snapshot_20151122"
+    mappings = "stable_20"
 }
 
 dependencies {
