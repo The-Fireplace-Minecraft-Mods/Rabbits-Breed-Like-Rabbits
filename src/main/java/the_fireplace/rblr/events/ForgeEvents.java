@@ -10,6 +10,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import the_fireplace.rblr.RBLR;
 import the_fireplace.rblr.config.ConfigValues;
 @SuppressWarnings("unused")
 public class ForgeEvents {
@@ -17,7 +18,8 @@ public class ForgeEvents {
 	public void livingUpdate(LivingUpdateEvent event){
 		if(event.entityLiving instanceof EntityRabbit && !event.entityLiving.worldObj.isRemote && ConfigValues.RBLR)
 			if(!event.entityLiving.isChild() && !((EntityAnimal)event.entityLiving).isInLove() && event.entityLiving.worldObj.getWorldTime() % 4800 == 0)
-				((EntityRabbit) event.entityLiving).setInLove(null);
+				if(!ConfigValues.LIMITER || !RBLR.shouldLimit((EntityRabbit)event.entityLiving))
+					((EntityRabbit) event.entityLiving).setInLove(null);
 		if(event.entityLiving instanceof EntityRabbit && ConfigValues.RGUQ)
 			if(event.entityLiving.isChild())
 				((EntityRabbit)event.entityLiving).addGrowth(2);

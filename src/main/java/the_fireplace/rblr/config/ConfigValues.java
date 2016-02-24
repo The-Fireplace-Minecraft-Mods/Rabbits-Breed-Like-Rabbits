@@ -23,4 +23,8 @@ public class ConfigValues {
 	public static final boolean RJOC_DEFAULT = true;
 	public static boolean RJOC;
 	public static final String RJOC_NAME = "cfg.rjoc";
+
+	public static final boolean LIMITER_DEFAULT = true;
+	public static boolean LIMITER;
+	public static final String LIMITER_NAME = "cfg.limiter";
 }

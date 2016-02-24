@@ -8,3 +8,5 @@ cfg.rguq=Rabbits Grow Up Quickly
 cfg.rguq.tooltip=Rabbits grow up faster than other animals.
 cfg.rjoc=Rabbits Jump On Crops
 cfg.rjoc.tooltip=Rabbits jump on crops when they walk over them.
+cfg.limiter=Rabbit Limiter
+cfg.limiter.tooltip=Attempts to limit the number of rabbits.
