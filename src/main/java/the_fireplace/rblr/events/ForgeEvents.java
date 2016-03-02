@@ -23,7 +23,7 @@ public class ForgeEvents {
 		if(event.entityLiving instanceof EntityRabbit && ConfigValues.RGUQ)
 			if(event.entityLiving.isChild())
 				((EntityRabbit)event.entityLiving).addGrowth(2);
-		if(event.entityLiving instanceof EntityRabbit && ConfigValues.RJOC)
+		if(event.entityLiving instanceof EntityRabbit && ConfigValues.RJOC && ((EntityRabbit) event.entityLiving).worldObj.getGameRules().getBoolean("mobGriefing"))
 			if(((EntityRabbit) event.entityLiving).worldObj.getBlockState(event.entityLiving.getPosition().down()).getBlock() instanceof BlockFarmland) {
 				event.entityLiving.setJumping(true);
 				((EntityRabbit) event.entityLiving).worldObj.setBlockState(event.entityLiving.getPosition().down(), Blocks.dirt.getDefaultState());
