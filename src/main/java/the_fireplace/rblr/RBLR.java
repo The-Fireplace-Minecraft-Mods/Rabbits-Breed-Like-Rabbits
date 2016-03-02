@@ -60,13 +60,8 @@ public class RBLR {
 	}
 
 	public static boolean shouldLimit(EntityRabbit entity){
-		if(entity.isInvisible())
+		if(entity.isInvisible() || entity.worldObj.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 64)
 			return true;
-		if(entity.worldObj != null)
-			if(entity.getCollisionBoundingBox() != null)
-				if(!entity.worldObj.getEntitiesWithinAABB(EntityRabbit.class, entity.getCollisionBoundingBox().expand(16, 16, 16)).isEmpty())
-					if(entity.worldObj.getEntitiesWithinAABB(EntityRabbit.class, entity.getCollisionBoundingBox().expand(16, 16, 16)).size() > 8)
-						return true;
 		return false;
 	}
 }
