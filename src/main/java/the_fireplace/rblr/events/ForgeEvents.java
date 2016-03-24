@@ -5,6 +5,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemFood;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -31,13 +32,13 @@ public class ForgeEvents {
 	}
 	@SubscribeEvent
 	public void entityInteract(EntityInteractEvent event){
-		if(event.target instanceof EntityRabbit && ConfigValues.REAF && event.entityPlayer.getHeldItem() != null)
-			if(event.entityPlayer.getHeldItem().getItem() instanceof ItemFood){
-				event.entityPlayer.getHeldItem().stackSize--;
-				if(((EntityRabbit) event.target).getHealth() < ((EntityRabbit) event.target).getMaxHealth())
-					((EntityRabbit) event.target).heal(1);
-				if(((EntityRabbit)event.target).isChild() && ConfigValues.RGUQ)
-					((EntityRabbit)event.target).addGrowth(2);
+		if(event.getTarget() instanceof EntityRabbit && ConfigValues.REAF && event.entityPlayer.getHeldItem(EnumHand.MAIN_HAND) != null)
+			if(event.entityPlayer.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood){
+				event.entityPlayer.getHeldItem(EnumHand.MAIN_HAND).stackSize--;
+				if(((EntityRabbit) event.getTarget()).getHealth() < ((EntityRabbit) event.getTarget()).getMaxHealth())
+					((EntityRabbit) event.getTarget()).heal(1);
+				if(((EntityRabbit)event.getTarget()).isChild() && ConfigValues.RGUQ)
+					((EntityRabbit)event.getTarget()).addGrowth(2);
 			}
 	}
 	@SubscribeEvent

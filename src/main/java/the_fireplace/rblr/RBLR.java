@@ -1,7 +1,7 @@
 package the_fireplace.rblr;
 
 import net.minecraft.entity.passive.EntityRabbit;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
@@ -48,20 +48,18 @@ public class RBLR {
 
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
-		RBLR_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RBLR_NAME, ConfigValues.RBLR_DEFAULT, StatCollector.translateToLocal(ConfigValues.RBLR_NAME+".tooltip"));
-		REAF_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.REAF_NAME, ConfigValues.REAF_DEFAULT, StatCollector.translateToLocal(ConfigValues.REAF_NAME+".tooltip"));
-		RJRH_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJRH_NAME, ConfigValues.RJRH_DEFAULT, StatCollector.translateToLocal(ConfigValues.RJRH_NAME+".tooltip"));
-		RGUQ_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RGUQ_NAME, ConfigValues.RGUQ_DEFAULT, StatCollector.translateToLocal(ConfigValues.RGUQ_NAME+".tooltip"));
-		RJOC_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJOC_NAME, ConfigValues.RJOC_DEFAULT, StatCollector.translateToLocal(ConfigValues.RJOC_NAME+".tooltip"));
-		LIMITER_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.LIMITER_NAME, ConfigValues.LIMITER_DEFAULT, StatCollector.translateToLocal(ConfigValues.LIMITER_NAME+".tooltip"));
+		RBLR_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RBLR_NAME, ConfigValues.RBLR_DEFAULT, I18n.translateToLocal(ConfigValues.RBLR_NAME+".tooltip"));
+		REAF_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.REAF_NAME, ConfigValues.REAF_DEFAULT, I18n.translateToLocal(ConfigValues.REAF_NAME+".tooltip"));
+		RJRH_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJRH_NAME, ConfigValues.RJRH_DEFAULT, I18n.translateToLocal(ConfigValues.RJRH_NAME+".tooltip"));
+		RGUQ_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RGUQ_NAME, ConfigValues.RGUQ_DEFAULT, I18n.translateToLocal(ConfigValues.RGUQ_NAME+".tooltip"));
+		RJOC_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJOC_NAME, ConfigValues.RJOC_DEFAULT, I18n.translateToLocal(ConfigValues.RJOC_NAME+".tooltip"));
+		LIMITER_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.LIMITER_NAME, ConfigValues.LIMITER_DEFAULT, I18n.translateToLocal(ConfigValues.LIMITER_NAME+".tooltip"));
 		syncConfig();
 
 		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
 	}
 
 	public static boolean shouldLimit(EntityRabbit entity){
-		if(entity.isInvisible() || entity.worldObj.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 64)
-			return true;
-		return false;
+		return entity.isInvisible() || entity.worldObj.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 64;
 	}
 }
