@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import the_fireplace.rblr.config.ConfigValues;
-import the_fireplace.rblr.events.ForgeEvents;
+import the_fireplace.rblr.events.CommonEvents;
 
 @Mod(modid=RBLR.MODID, name=RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory")
 public class RBLR {
@@ -56,7 +56,7 @@ public class RBLR {
 		LIMITER_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.LIMITER_NAME, ConfigValues.LIMITER_DEFAULT, I18n.translateToLocal(ConfigValues.LIMITER_NAME+".tooltip"));
 		syncConfig();
 
-		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
+		MinecraftForge.EVENT_BUS.register(new CommonEvents());
 	}
 
 	public static boolean shouldLimit(EntityRabbit entity){
