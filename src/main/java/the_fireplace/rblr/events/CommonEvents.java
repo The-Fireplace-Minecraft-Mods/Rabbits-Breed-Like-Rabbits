@@ -10,6 +10,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import the_fireplace.rblr.RBLR;
 import the_fireplace.rblr.config.ConfigValues;
@@ -50,5 +51,10 @@ public class CommonEvents {
 	public void livingFall(LivingFallEvent event){
 		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRH)
 			((EntityRabbit)event.getEntity()).jumpMovementFactor -= 0.5;
+	}
+	@SubscribeEvent
+	public void configChanged(ConfigChangedEvent event){
+		if(event.getModID().equals(RBLR.MODID))
+			RBLR.syncConfig();
 	}
 }

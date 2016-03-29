@@ -26,7 +26,7 @@ public class RBLR {
 	public static Property RJOC_PROPERTY;
 	public static Property LIMITER_PROPERTY;
 
-	public void syncConfig(){
+	public static void syncConfig(){
 		ConfigValues.RBLR = RBLR_PROPERTY.getBoolean();
 		ConfigValues.REAF = REAF_PROPERTY.getBoolean();
 		ConfigValues.RJRH = RJRH_PROPERTY.getBoolean();
