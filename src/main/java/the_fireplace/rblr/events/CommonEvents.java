@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import the_fireplace.rblr.RBLR;
@@ -28,11 +28,11 @@ public class CommonEvents {
 		if(event.getEntityLiving() instanceof EntityRabbit && ConfigValues.RJOC && ((EntityRabbit) event.getEntityLiving()).worldObj.getGameRules().getBoolean("mobGriefing"))
 			if(((EntityRabbit) event.getEntityLiving()).worldObj.getBlockState(event.getEntityLiving().getPosition().down()).getBlock() instanceof BlockFarmland) {
 				event.getEntityLiving().setJumping(true);
-				((EntityRabbit) event.getEntityLiving()).worldObj.setBlockState(event.getEntityLiving().getPosition().down(), Blocks.dirt.getDefaultState());
+				((EntityRabbit) event.getEntityLiving()).worldObj.setBlockState(event.getEntityLiving().getPosition().down(), Blocks.DIRT.getDefaultState());
 			}
 	}
 	@SubscribeEvent
-	public void entityInteract(EntityInteractEvent event){
+	public void entityInteract(PlayerInteractEvent.EntityInteract event){
 		if(event.getTarget() instanceof EntityRabbit && ConfigValues.REAF && event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND) != null)
 			if(event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood){
 				event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).stackSize--;
