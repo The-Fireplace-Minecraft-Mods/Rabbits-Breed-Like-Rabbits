@@ -11,12 +11,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import the_fireplace.rblr.config.ConfigValues;
 import the_fireplace.rblr.events.CommonEvents;
 
-@Mod(modid=RBLR.MODID, name=RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", updateJSON = "http://caterpillar.bitnamiapp.com/jsons/rblr.json")
+@Mod(modid=RBLR.MODID, name=RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", updateJSON = "http://caterpillar.bitnamiapp.com/jsons/rblr.json", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
 public class RBLR {
 	public static final String MODID = "rblr";
 	public static final String MODNAME = "Rabbits Breed Like Rabbits";
-	public static String VERSION;
-	public static final String curseCode = "240916-rabbits-breed-like-rabbits";
 	public static Configuration config;
 
 	public static Property RBLR_PROPERTY;
@@ -40,11 +38,6 @@ public class RBLR {
 	@EventHandler
 	@SuppressWarnings("unused")
 	public void preInit(FMLPreInitializationEvent event){
-		String[] version = event.getModMetadata().version.split("\\.");
-		if(version[3].equals("BUILDNUMBER"))//Dev environment
-			VERSION = event.getModMetadata().version.replace("BUILDNUMBER", "9001");
-		else//Released build
-			VERSION = event.getModMetadata().version;
 
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
