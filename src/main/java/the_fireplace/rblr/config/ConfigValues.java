@@ -16,6 +16,10 @@ public class ConfigValues {
 	public static boolean RJRH;
 	public static final String RJRH_NAME = "cfg.rjrh";
 
+	public static final boolean RJRF_DEFAULT = true;
+	public static boolean RJRF;
+	public static final String RJRF_NAME = "cfg.rjrf";
+
 	public static final boolean RGUQ_DEFAULT = true;
 	public static boolean RGUQ;
 	public static final String RGUQ_NAME = "cfg.rguq";

@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import the_fireplace.rblr.config.ConfigValues;
 import the_fireplace.rblr.events.CommonEvents;
 
-@Mod(modid=RBLR.MODID, name=RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", updateJSON = "http://caterpillar.bitnamiapp.com/jsons/rblr.json", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
+@Mod(modid=RBLR.MODID, name=RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", updateJSON = "http://thefireplace.bitnamiapp.com/jsons/rblr.json", acceptedMinecraftVersions = "[1.11,)")
 public class RBLR {
 	public static final String MODID = "rblr";
 	public static final String MODNAME = "Rabbits Breed Like Rabbits";
@@ -20,6 +20,7 @@ public class RBLR {
 	public static Property RBLR_PROPERTY;
 	public static Property REAF_PROPERTY;
 	public static Property RJRH_PROPERTY;
+	public static Property RJRF_PROPERTY;
 	public static Property RGUQ_PROPERTY;
 	public static Property RJOC_PROPERTY;
 	public static Property LIMITER_PROPERTY;
@@ -28,6 +29,7 @@ public class RBLR {
 		ConfigValues.RBLR = RBLR_PROPERTY.getBoolean();
 		ConfigValues.REAF = REAF_PROPERTY.getBoolean();
 		ConfigValues.RJRH = RJRH_PROPERTY.getBoolean();
+		ConfigValues.RJRF = RJRF_PROPERTY.getBoolean();
 		ConfigValues.RGUQ = RGUQ_PROPERTY.getBoolean();
 		ConfigValues.RJOC = RJOC_PROPERTY.getBoolean();
 		ConfigValues.LIMITER = LIMITER_PROPERTY.getBoolean();
@@ -44,6 +46,7 @@ public class RBLR {
 		RBLR_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RBLR_NAME, ConfigValues.RBLR_DEFAULT, I18n.translateToLocal(ConfigValues.RBLR_NAME+".tooltip"));
 		REAF_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.REAF_NAME, ConfigValues.REAF_DEFAULT, I18n.translateToLocal(ConfigValues.REAF_NAME+".tooltip"));
 		RJRH_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJRH_NAME, ConfigValues.RJRH_DEFAULT, I18n.translateToLocal(ConfigValues.RJRH_NAME+".tooltip"));
+		RJRF_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJRF_NAME, ConfigValues.RJRF_DEFAULT, I18n.translateToLocal(ConfigValues.RJRF_NAME+".tooltip"));
 		RGUQ_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RGUQ_NAME, ConfigValues.RGUQ_DEFAULT, I18n.translateToLocal(ConfigValues.RGUQ_NAME+".tooltip"));
 		RJOC_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.RJOC_NAME, ConfigValues.RJOC_DEFAULT, I18n.translateToLocal(ConfigValues.RJOC_NAME+".tooltip"));
 		LIMITER_PROPERTY = config.get(Configuration.CATEGORY_GENERAL, ConfigValues.LIMITER_NAME, ConfigValues.LIMITER_DEFAULT, I18n.translateToLocal(ConfigValues.LIMITER_NAME+".tooltip"));
@@ -53,6 +56,6 @@ public class RBLR {
 	}
 
 	public static boolean shouldLimit(EntityRabbit entity){
-		return entity.isInvisible() || entity.worldObj.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 32;
+		return entity.isInvisible() || entity.world.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 16;
 	}
 }

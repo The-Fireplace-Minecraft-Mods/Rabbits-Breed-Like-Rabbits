@@ -3,16 +3,14 @@
   "modid": "rblr",
   "name": "Rabbits Breed Like Rabbits",
   "description": "Rabbits breed like rabbits, and other rabbit tweaks.",
-  "version": "6.0.2.BUILDNUMBER",
-  "mcversion": "",
+  "version": "${version}",
+  "mcversion": "1.11",
   "url": "http://www.curse.com/mc-mods/minecraft/240916-rabbits-breed-like-rabbits",
   "updateUrl": "http://www.curse.com/mc-mods/minecraft/240916-rabbits-breed-like-rabbits",
   "authorList": ["The_Fireplace"],
   "credits": "",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": [],
-  "requiredMods": ["Forge@[12.17.0.1909,)"],
-  "useDependencyInformation": true
+  "dependencies": []
 }
 ]

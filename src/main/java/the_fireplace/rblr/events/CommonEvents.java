@@ -18,24 +18,24 @@ import the_fireplace.rblr.config.ConfigValues;
 public class CommonEvents {
 	@SubscribeEvent
 	public void livingUpdate(LivingUpdateEvent event){
-		if(event.getEntityLiving() instanceof EntityRabbit && !event.getEntityLiving().worldObj.isRemote && ConfigValues.RBLR)
-			if(!event.getEntityLiving().isChild() && !((EntityAnimal)event.getEntityLiving()).isInLove() && event.getEntityLiving().worldObj.getWorldTime() % 4800 == 0)
+		if(event.getEntityLiving() instanceof EntityRabbit && !event.getEntityLiving().world.isRemote && ConfigValues.RBLR)
+			if(!event.getEntityLiving().isChild() && !((EntityAnimal)event.getEntityLiving()).isInLove() && event.getEntityLiving().world.getWorldTime() % 4800 == 0)
 				if(!ConfigValues.LIMITER || !RBLR.shouldLimit((EntityRabbit)event.getEntityLiving()))
 					((EntityRabbit) event.getEntityLiving()).setInLove(null);
 		if(event.getEntityLiving() instanceof EntityRabbit && ConfigValues.RGUQ)
 			if(event.getEntityLiving().isChild())
 				((EntityRabbit)event.getEntityLiving()).addGrowth(2);
-		if(event.getEntityLiving() instanceof EntityRabbit && ConfigValues.RJOC && ((EntityRabbit) event.getEntityLiving()).worldObj.getGameRules().getBoolean("mobGriefing"))
-			if(((EntityRabbit) event.getEntityLiving()).worldObj.getBlockState(event.getEntityLiving().getPosition().down()).getBlock() instanceof BlockFarmland) {
+		if(event.getEntityLiving() instanceof EntityRabbit && ConfigValues.RJOC && ((EntityRabbit) event.getEntityLiving()).world.getGameRules().getBoolean("mobGriefing"))
+			if(((EntityRabbit) event.getEntityLiving()).world.getBlockState(event.getEntityLiving().getPosition().down()).getBlock() instanceof BlockFarmland) {
 				event.getEntityLiving().setJumping(true);
-				((EntityRabbit) event.getEntityLiving()).worldObj.setBlockState(event.getEntityLiving().getPosition().down(), Blocks.DIRT.getDefaultState());
+				((EntityRabbit) event.getEntityLiving()).world.setBlockState(event.getEntityLiving().getPosition().down(), Blocks.DIRT.getDefaultState());
 			}
 	}
 	@SubscribeEvent
 	public void entityInteract(PlayerInteractEvent.EntityInteract event){
-		if(event.getTarget() instanceof EntityRabbit && ConfigValues.REAF && event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND) != null)
+		if(event.getTarget() instanceof EntityRabbit && ConfigValues.REAF && !event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).isEmpty())
 			if(event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood){
-				event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).stackSize--;
+				event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND).shrink(1);
 				if(((EntityRabbit) event.getTarget()).getHealth() < ((EntityRabbit) event.getTarget()).getMaxHealth())
 					((EntityRabbit) event.getTarget()).heal(1);
 				if(((EntityRabbit)event.getTarget()).isChild() && ConfigValues.RGUQ)
@@ -44,13 +44,21 @@ public class CommonEvents {
 	}
 	@SubscribeEvent
 	public void livingJump(LivingEvent.LivingJumpEvent event){
-		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRH)
-			((EntityRabbit)event.getEntity()).jumpMovementFactor += 0.5;
+		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRH) {
+			((EntityRabbit) event.getEntity()).motionY += 0.5F;
+		}
+		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRF) {
+			((EntityRabbit) event.getEntity()).jumpMovementFactor += 1.0;
+		}
 	}
 	@SubscribeEvent
 	public void livingFall(LivingFallEvent event){
-		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRH)
-			((EntityRabbit)event.getEntity()).jumpMovementFactor -= 0.5;
+		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRH) {
+			((EntityRabbit) event.getEntity()).motionY -= 0.25F;
+		}
+		if(event.getEntity() instanceof EntityRabbit && ConfigValues.RJRF) {
+			((EntityRabbit) event.getEntity()).jumpMovementFactor -= 1.0;
+		}
 	}
 	@SubscribeEvent
 	public void configChanged(ConfigChangedEvent event){
