@@ -1,3 +1,2 @@
-Updated to 1.11
-Fixed Rabbits Jump Really High
-Added Rabbits Jump Really Far
+Updated to 1.11.2
+Internal improvements

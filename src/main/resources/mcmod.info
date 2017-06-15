@@ -4,7 +4,7 @@
   "name": "Rabbits Breed Like Rabbits",
   "description": "Rabbits breed like rabbits, and other rabbit tweaks.",
   "version": "${version}",
-  "mcversion": "1.11",
+  "mcversion": "",
   "url": "http://www.curse.com/mc-mods/minecraft/240916-rabbits-breed-like-rabbits",
   "updateUrl": "http://www.curse.com/mc-mods/minecraft/240916-rabbits-breed-like-rabbits",
   "authorList": ["The_Fireplace"],
