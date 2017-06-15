@@ -5,7 +5,7 @@ import the_fireplace.rblr.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
 	@Override
-	public String format(String s, Object... args){
+	public String format(String s, Object... args) {
 		return I18n.format(s, args);
 	}
 }
