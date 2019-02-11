@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import the_fireplace.rblr.config.ConfigValues;
 import the_fireplace.rblr.events.CommonEvents;
 
-@Mod(modid = RBLR.MODID, name = RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", updateJSON = "https://bitbucket.org/The_Fireplace/minecraft-mod-updates/raw/master/rblr.json", acceptedMinecraftVersions = "[1.11,)", version = "${version}")
+@Mod(modid = RBLR.MODID, name = RBLR.MODNAME, guiFactory = "the_fireplace.rblr.config.RBLRGuiFactory", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.11,)", version = "${version}")
 public class RBLR {
 	public static final String MODID = "rblr";
 	public static final String MODNAME = "Rabbits Breed Like Rabbits";
@@ -59,6 +59,6 @@ public class RBLR {
 	}
 
 	public static boolean shouldLimit(EntityRabbit entity) {
-		return entity.isInvisible() || entity.world.getChunkFromBlockCoords(entity.getPosition()).getEntityLists().length > 16;
+		return entity.isInvisible() || entity.world.getChunk(entity.getPosition()).getEntityLists().length > 16;
 	}
 }
